@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <title>eMercado - Todo lo que busques está aquí</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <style>
+    html, body{
+      height: 100%;
+    }
+
+    body {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: center;
+      align-items: center;
+      padding-top: 50px;
+      padding-bottom: 100px;
+      background: linear-gradient(rgba(45, 46, 48, 0.60), rgba(45,46,48,0.60)),
+      url(img/ecommerce-examp.jpeg) no-repeat, center;
+      background-size: cover;
+    }
+   
+    .signin {
+      width: 100%;
+      max-width: 330px;
+      padding: 15px;
+      margin: auto;
+      background-color:transparent;
+      font-family:sans-serif;
+      }
+      .signin input{
+        width: 100%;
+        margin-bottom: 30px;
+       outline: none;
+      }
+      .signin input[type="email"],
+      .signin input[type="password"]
+      { border: none;
+        background-color: transparent;
+        border-bottom: 1px solid white;
+        color: white;
+        font-family: unset;
+        height: 25px;
+      }
+      .signin input[type="submit"]{
+       border: none;
+       color: white;
+       margin-top: 18px;
+       background-color: rgb(26, 73, 204);
+       border-radius: 10px;
+       width:200px; 
+       height: 30px;
+      }
+      .alert-heading {
+        color: white;
+        text-align: center;
+        padding-top:50px;
+        font-size: 25px;
+        font-family:sans-serif;
+      }
+       .dform {
+      color: white;
+      font-weight:bold;
+      font-family: sans-serif;
+      font-size: 15px;
+      text-align: center;
+}
+    .signin a {
+   color: grey;
+   font-size: 12px;
+
+  }
+ .signin a:hover{
+   color: beige;
+ }
+     .logo{ 
+       width: 85px;
+       height: 85px;
+       border-radius: 50%;
+       position: absolute;
+       top: -40px;
+       left: calc(50% - 50px);
+       
+
+    } 
+  </style>
+</head>
+
+<body class="text-center">
+<div class="container p-5">
+    <div class="alert alert-danger" role="alert" style="position: relative; width: 300px; top: 35px; background: rgba(0, 0, 0, 0.85); border: transparent;border-radius: 10px;">
+      <img class="logo" src="img/logo.png" alt="LogoEcommerce">
+      
+      <h4 class="alert-heading">Inicia sesión</h4>
+      
+      <div class="signin">
+      <p class="dform">Email </p><input id="usuario" type="email" name="email" placeholder="Escribe tu email"> 
+      <p class="dform">Contraseña</p><input id="contraseña" type="password" name="password" placeholder="Escribe tu contraseña">
+      <input id="enviar" type="submit" value="Ingresar">
+       <hr>
+      <a href="#">He olvidado la contraseña</a> <br>
+      <a href="#">Registrarme</a>
+      </div>
+      </div>
+  </div>
+
+
+  <script src="js/init.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>
