@@ -285,3 +285,10 @@ background-color: rgb(202, 202, 202);
   text-shadow: 0 0 7px rgb(54, 54, 52);
   
 }
+
+#divPr{
+  display:flex;
+  flex-direction:columns;
+  border: 1px solid gray;
+  
+}

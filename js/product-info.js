@@ -3,18 +3,8 @@
 //elementos HTML presentes.
 let productoAMostrar= {};
 let comentariosAMostrar=[];
-let nuevoArray = []
-
-
-function productosRelacionados(array){
-    let pr=""
-    for (let i = 0; i < array.length; i++) {
-        const element = array[i];
-      
-        pr= `<p>`+element+`</p>`
-        }
-  document.getElementById("prodR").innerHTML = pr;
-  }
+let nuevoArray = [];
+let arrayPr = [];
 
 document.addEventListener("DOMContentLoaded", function(e){
     
@@ -94,8 +84,6 @@ function mostrarComentarios(array){
 document.getElementById("comentary").innerHTML += comm;
 }
 
-
-
 //fetch que trae los comentarios y los muestra si esta todo ok
       document.addEventListener("DOMContentLoaded", function(e){
     
@@ -113,6 +101,7 @@ document.getElementById("comentary").innerHTML += comm;
 
       });
 
+      
       //función que retorna en valor numérico cuantas estrellas estan marcadas
     function starChecked(){
         let estrellitas = document.getElementsByName("rating");
@@ -122,7 +111,9 @@ document.getElementById("comentary").innerHTML += comm;
     }
 }
     }
-// Agrega nuevo comentario, haciendo push con un nuevo objeto al array donde estan el resto de los comentarios
+
+
+    // Agrega nuevo comentario, haciendo push con un nuevo objeto al array donde estan el resto de los comentarios
 function agregarComentario(nuevoArray){
     let comentarioNuevo = document.getElementById("textoComentario").value;
     let fecha = new Date();
@@ -142,5 +133,32 @@ document.getElementById("botonComentar").addEventListener("click", function(){
    
     
   });
+
+  // Función que hace fetch
         
+document.addEventListener("DOMContentLoaded", function(e){
+
+    getJSONData(PRODUCTS_URL).then(function(resultadoPr){
+        if(resultadoPr.status === 'ok'){
         
+        arrayPr = resultadoPr.data;
+
+        productosRelacionados(arrayPr)
+        }
+    })
+});
+
+function productosRelacionados(array){
+    let pr = ""
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+      if (element.name === "Chevrolet Onix Joy" || element.name === "Suzuki Celerio"){
+        pr += `<div id="divPr">
+        <img id="imgPr" style="width: 180px; height: 90px; margin: 10px;" src="`+ element.imgSrc+`" alt="autos relacionados"> 
+        <p style="margin: 25px; font-size: 20px; font-weight: bold;">`+element.name+`</p>
+        <a href="#" class="badge badge-info" style="width:60px; height:20px; margin:30px;">Info</a>
+        </div>`
+        }
+  document.getElementById("prodR").innerHTML = pr;
+  }
+}
