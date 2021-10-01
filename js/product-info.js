@@ -5,7 +5,8 @@ let productoAMostrar= {};
 let comentariosAMostrar=[];
 let nuevoArray = [];
 let arrayPr = [];
-
+//fetch que trae los comentarios, productos y productos relacionados y los muestra si esta todo ok
+// los carga luego de que carga la pagina
 document.addEventListener("DOMContentLoaded", function(e){
     
     getJSONData(PRODUCT_INFO_URL).then(function(resultado){
@@ -25,15 +26,39 @@ document.addEventListener("DOMContentLoaded", function(e){
            productosVendidosHTML.innerHTML = productoAMostrar.soldCount +" "+"vendidos";
        
            
-           productosRelacionados(productoAMostrar.relatedProducts)
+           
         
         
         }else{
             alert("Error inesperado");
         }
+        
+        getJSONData(PRODUCTS_URL).then(function(resultadoPr){
+            if(resultadoPr.status === 'ok'){
+            
+            arrayPr = resultadoPr.data;
     
+            productosRelacionados(arrayPr, productoAMostrar.relatedProducts)
+            
+        }
+
+     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultCom){
+        if(resultCom.status === 'ok'){
+        
+        comentariosAMostrar = resultCom.data;
+        mostrarComentarios(comentariosAMostrar);
+        
+        
+    }else{
+            alert("Error inesperado");
+        }
     });
-});
+
+      });
+    });
+
+      
+    });
 
 
 function mostrarComentarios(array){
@@ -83,26 +108,7 @@ function mostrarComentarios(array){
 }
 document.getElementById("comentary").innerHTML += comm;
 }
-
-//fetch que trae los comentarios y los muestra si esta todo ok
-      document.addEventListener("DOMContentLoaded", function(e){
-    
-    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultCom){
-        if(resultCom.status === 'ok'){
-        
-        comentariosAMostrar = resultCom.data;
-        mostrarComentarios(comentariosAMostrar);
-        
-        
-    }else{
-            alert("Error inesperado");
-        }
-    });
-
-      });
-
-      
-      //función que retorna en valor numérico cuantas estrellas estan marcadas
+ //función que retorna en valor numérico cuantas estrellas estan marcadas
     function starChecked(){
         let estrellitas = document.getElementsByName("rating");
         for (let i = 0; i < estrellitas.length; i++) {
@@ -111,9 +117,7 @@ document.getElementById("comentary").innerHTML += comm;
     }
 }
     }
-
-
-    // Agrega nuevo comentario, haciendo push con un nuevo objeto al array donde estan el resto de los comentarios
+// Agrega nuevo comentario, haciendo push con un nuevo objeto al array donde estan el resto de los comentarios
 function agregarComentario(nuevoArray){
     let comentarioNuevo = document.getElementById("textoComentario").value;
     let fecha = new Date();
@@ -121,8 +125,6 @@ function agregarComentario(nuevoArray){
     
     nuevoArray.push(newComent)
    }
-
-
 // clickeando en el boton de comentar , se ejecuta la función de agregar comentario y luego la de mostrar comentario
 //que lo que hace es hacer una actualización con el último comentario agregado.
 document.getElementById("botonComentar").addEventListener("click", function(){
@@ -134,31 +136,16 @@ document.getElementById("botonComentar").addEventListener("click", function(){
     
   });
 
-  // Función que hace fetch
-        
-document.addEventListener("DOMContentLoaded", function(e){
-
-    getJSONData(PRODUCTS_URL).then(function(resultadoPr){
-        if(resultadoPr.status === 'ok'){
-        
-        arrayPr = resultadoPr.data;
-
-        productosRelacionados(arrayPr)
-        }
-    })
-});
-
-function productosRelacionados(array){
+ function productosRelacionados(arrayPr, productoAMostrar){
     let pr = ""
-    for (let i = 0; i < array.length; i++) {
-        const element = array[i];
-      if (element.name === "Chevrolet Onix Joy" || element.name === "Suzuki Celerio"){
-        pr += `<div id="divPr">
-        <img id="imgPr" style="width: 180px; height: 90px; margin: 10px;" src="`+ element.imgSrc+`" alt="autos relacionados"> 
-        <p style="margin: 25px; font-size: 20px; font-weight: bold;">`+element.name+`</p>
+    for (let i = 0; i < productoAMostrar.length; i++) {
+        element = productoAMostrar[i]
+    pr += `<div id="divPr">
+        <img id="imgPr" style="width: 180px; height: 90px; margin: 10px;" src="`+ arrayPr[element].imgSrc+`" alt="autos relacionados"> 
+        <p style="margin: 25px; font-size: 20px; font-weight: bold;">`+ arrayPr[element].name +`</p>
         <a href="#" class="badge badge-info" style="width:60px; height:20px; margin:30px;">Info</a>
         </div>`
         }
   document.getElementById("prodR").innerHTML = pr;
   }
-}
+

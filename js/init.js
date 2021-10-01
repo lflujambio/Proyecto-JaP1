@@ -53,8 +53,6 @@ document.getElementById("btnClose").addEventListener("click", function (){
 
   localStorage.removeItem("Email")
 
-
-
 });
 
 
