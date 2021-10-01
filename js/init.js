@@ -49,7 +49,13 @@ document.getElementById("cuenta").innerHTML += cuenta;
 
 });
 
+document.getElementById("btnClose").addEventListener("click", function (){
 
+  localStorage.removeItem("Email")
+
+
+
+});
 
 
 
