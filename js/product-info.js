@@ -102,7 +102,7 @@ function mostrarComentarios(array){
                 <span class="fa fa-star checked"></span></p>`
             }
     
-        comm += `</p> <p> <strong>`+ comentario.user +  `</strong></p> <p>` +comentario.description +`</p>
+        comm += `<p> <strong>`+ comentario.user +  `</strong></p> <p>` +comentario.description +`</p>
         <small> ` + comentario.dateTime + `</small> <hr>`
     
 }
