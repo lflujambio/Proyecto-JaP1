@@ -11,7 +11,7 @@ getJSONData(JSON_CARRITO).then(function(resultado){
     infoCarrito = resultado.data;
         
      carrito(infoCarrito.articles)
-     
+     calcTotal();
     }
     else {
         alert("error inesperado")
@@ -21,35 +21,68 @@ getJSONData(JSON_CARRITO).then(function(resultado){
 
 });
 
+//Función que muestra en pantalla los elementos gráficos del carrito con DOM
 function carrito(array){
     let contenido = "";
     
         for (let i = 0; i < array.length; i++) {
             let element = array[i];
+           
+            if (element.currency === "USD"){
+                
+                contenido += `<p class="col-md" id="carroNames">`+ element.name +` </p></div>
+                <div><img id="imgCarro"class="col-md-4" src="`+ element.src + `" alt="elemento" ><br><br>
+               <div class="col-md" id="precioCarro" class="col-md">PRECIO UNITARIO:`+ element.unitCost*40 + ` UYU </div><br>
+               <div class="col-md">CANTIDAD: <input class="col-md-2" id="cantidadCarro${i}" onchange="subTotal(${element.unitCost*40},${i})" type="number" value="`+ element.count +`" min="1" max="2"></input> </div> <br>
+               <div class="col-md">
+               <div>SUBTOTAL:
+               <span class="subtotales" id="subTotalCarro${i}">
+               ` + element.unitCost * 40 * element.count +` UYU
+             </span>
+               </div>
+               </div>
+               <hr>
+               `
+            }else{
+
+     contenido += `<p class="col-md" id="carroNames">`+ element.name +` </p></div>
+     <div><img id="imgCarro"class="col-md-3" src="`+ element.src + `" alt="elemento" ><br><br>
+    <div class="col-md" id="precioCarro" class="col-md">PRECIO UNITARIO:`+ element.unitCost + " " + element.currency +`</div><br>
+    <div class="col-md">CANTIDAD: <input class="col-md-2" id="cantidadCarro${i}" onchange="subTotal(${element.unitCost},${i})" type="number" value="`+ element.count +`" min="1" max=""></input> </div> <br>
+    <div class="col-md">
+    <div>SUBTOTAL:
+    <span  class="subtotales" id="subTotalCarro${i}">
+    ` + element.unitCost * element.count +` UYU
+  </span>
+    </div>
+    </div>
+    <hr>
+    `
             
-     contenido += `<div> <img id="imgCarro${i}"class="col-md-4" src="`+ element.src + `" alt="elemento" >
-     <p id="carroNames${i}"`+ element.name +` </p></div>
-    <div id="precioCarro${i}" class="col-md">PRECIO UNITARIO:`+ element.unitCost + " " + element.currency +`</div>
-    <div class="col-md">CANTIDAD: <input onchange="subTotal(${element.unitCost},${i})" type="number" id="cantidadCarro${i}" value="`+ element.count +`"></input> </div> 
-    <hr>`
     }
-        document.getElementById("mostrandoCarro").innerHTML += contenido;
+        document.getElementById("mostrandoCarro").innerHTML = contenido;
     }
-  
-    function subTotal(precio, i){
+}
     
+//Función que calcula el subtotal multiplicando precio por cantidad, reconociendo los valores por índices y 
+//devolviendo el valor correcto al espacio correcto 
+function subTotal(precio, i){
     let cantidadArt = parseInt(document.getElementById(`cantidadCarro${i}`).value);
-    let costoUnidad = document.getElementById(`precioCarro${i}`)
-    let subtotal= Math.round(cantidadArt*costoUnidad)
-         
-   document.getElementsByClassName("cantCarro").innerHTML += subtotal
+    let subtotal = cantidadArt * precio;
+    
+    
+  document.getElementById(`subTotalCarro${i}`).innerHTML = subtotal + " " +"UYU";
+  calcTotal();
     }
     
     
- 
- 
- 
- 
-    // if (element.currency === "USD") {
-    //    element.unitCost * 40;
-    // /& "USD" === "UYU"  //}
+ function calcTotal (){
+     let total = 0;
+     let subs = document.getElementsByClassName("subtotales");
+     for (let i = 0; i < subs.length; i++) {
+         total += parseInt(subs[i].innerHTML);
+         
+        
+ }
+ document.getElementById("cardTotal").innerHTML = total + " " + "UYU";
+ }

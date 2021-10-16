@@ -64,7 +64,7 @@
 
         </div>
         <div class="col-md">
-           MI CARRITO
+          <h2> CARRITO DE COMPRAS</h2>
         </div>
 </div>
 
@@ -73,17 +73,43 @@
 <hr>
   
 <div class="row">
- <div class="col-md-7" id="mostrandoCarro">
-
+ <div class="col-md-8" id="mostrandoCarro">
+Subtotal:
   </div>
   <div class="col-md-4"><div class="card" style="width: 18rem;">
    <div class="card-body" style="background-color: rgb(201, 192, 192);">
-      <p class="card-text">Resumen:<hr></p>
-      <p class="card-text">Pino de olor: <span class="cantCarro">x</span></p>
+      <p class="card-text">Total:</p>
+      <div class="card-text" id="cardTotal">
+        
       
+      
+      </div>
+      <br>
       <hr>
-      <p class="card-text">Suzuki celerio: <span class="cantCarro">x</span></p>
-
+      <div class="card-text">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDatosEnvioYCompra">Comprar</button>
+      </div>
+      <div>
+        <div class="modal fade" id="modalDatosEnvioYCompra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Datos de envío</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                ... va el formulario
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" id="botonCompra" class="btn btn-primary">Comprar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div></div> 
 
