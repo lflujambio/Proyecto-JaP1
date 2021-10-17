@@ -86,3 +86,52 @@ function subTotal(precio, i){
  }
  document.getElementById("cardTotal").innerHTML = total + " " + "UYU";
  }
+
+
+
+
+
+ function redireccionCart(){
+     window.location.href="inicio.html"
+ }
+ 
+ document.getElementById("botonCompra").addEventListener("click", function(){
+     let camposCompletos = true;
+     let calle = document.getElementById("calleCasa")
+     let esquina = document.getElementById("esquinaCasa")
+     let numero= document.getElementById("numeroCasa")
+     let mail = document.getElementById("mail")
+     let tarjeta = document.getElementById("datosTarjeta")
+     let codigo = document.getElementById("codigoTarjeta")
+    
+     if (calle.value === '') {
+        camposCompletos = false;
+    }
+    if (esquina.value === '') {
+        camposCompletos=false;
+        
+    }
+    if (numero.value === '') {
+        camposCompletos =false;
+        
+    }
+    if (mail.value==='') {
+        camposCompletos=false;
+        
+    }
+    if (tarjeta.value=== '') {
+        camposCompletos=false;
+        
+    }
+    if (codigo.value=== '') {
+        camposCompletos=false;
+        
+    }
+   if (camposCompletos) {
+    alert("La compra se ha realizado con éxito!")
+    setTimeout(redireccionCart,1000)
+}else{
+    alert("Complete los campos")
+}
+
+});
