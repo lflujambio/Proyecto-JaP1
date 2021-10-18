@@ -30,33 +30,47 @@ function carrito(array){
            
             if (element.currency === "USD"){
                 
-                contenido += `<p class="col-md" id="carroNames">`+ element.name +` </p></div>
-                <div><img id="imgCarro"class="col-md-4" src="`+ element.src + `" alt="elemento" ><br><br>
-               <div class="col-md" id="precioCarro" class="col-md">PRECIO UNITARIO:`+ element.unitCost*40 + ` UYU </div><br>
-               <div class="col-md">CANTIDAD: <input class="col-md-2" id="cantidadCarro${i}" onchange="subTotal(${element.unitCost*40},${i})" type="number" value="`+ element.count +`" min="1" max="2"></input> </div> <br>
-               <div class="col-md">
-               <div>SUBTOTAL:
-               <span class="subtotales" id="subTotalCarro${i}">
-               ` + element.unitCost * 40 * element.count +` UYU
-             </span>
-               </div>
-               </div>
+                contenido += `<div class="card" style="width: 18rem; background-color: rgb(202, 191, 135);">
+                 <div class="card-body">
+                  <div class="card-text" style="text-align: center; font-size: 22px" id="carroNames">`+ element.name +`</div>
+                  <img id="imgCarro"class="col-md-8" src="`+ element.src + `" alt="elemento" ><br><br>
+                  <div class="card-text" id="precioCarro">PRECIO UNITARIO:<strong>`+ element.unitCost*40 + ` UYU </strong></div><br>
+                  <div class="card-text">CANTIDAD: <input class="col-md-4" id="cantidadCarro${i}" onchange="subTotal(${element.unitCost*40},${i})" type="number" value="`+ element.count +`" min="1" max="2"></input> </div> <br>
+                  <div>
+                  <div>SUBTOTAL:
+                  <strong class="subtotales" id="subTotalCarro${i}">
+                  ` + element.unitCost * 40 * element.count +` UYU
+                </strong>
+                  </div>
+                  </div>
+                  </div>
+              </div>
+               
+
+              
                <hr>
                `
             }else{
 
-     contenido += `<p class="col-md" id="carroNames">`+ element.name +` </p></div>
-     <div><img id="imgCarro"class="col-md-3" src="`+ element.src + `" alt="elemento" ><br><br>
-    <div class="col-md" id="precioCarro" class="col-md">PRECIO UNITARIO:`+ element.unitCost + " " + element.currency +`</div><br>
-    <div class="col-md">CANTIDAD: <input class="col-md-2" id="cantidadCarro${i}" onchange="subTotal(${element.unitCost},${i})" type="number" value="`+ element.count +`" min="1" max=""></input> </div> <br>
-    <div class="col-md">
-    <div>SUBTOTAL:
-    <span  class="subtotales" id="subTotalCarro${i}">
-    ` + element.unitCost * element.count +` UYU
-  </span>
-    </div>
-    </div>
-    <hr>
+                contenido += `<div class="card" style="width: 18rem; background-color: rgb(202, 191, 135);">
+                <div class="card-body">
+                 <div class="card-text" style="text-align: center; font-size: 22px" id="carroNames">`+ element.name +`</div>
+                 <img id="imgCarro"class="col-md-8" src="`+ element.src + `" alt="elemento" ><br><br>
+                 <div class="card-text" id="precioCarro"> PRECIO UNITARIO:<strong>   `+ element.unitCost + ` UYU </strong><br></div><br>
+                 <div class="card-text">CANTIDAD: <input class="col-md-4" id="cantidadCarro${i}" onchange="subTotal(${element.unitCost},${i})" type="number" value="`+ element.count +`" min="1" max=""></input> </div> <br>
+                 <div>
+                 <div>SUBTOTAL:
+                 <strong class="subtotales" id="subTotalCarro${i}">
+                 ` + element.unitCost * element.count +` UYU
+               </strong>
+                 </div>
+                 </div>
+                 </div>
+             </div>
+              
+
+             
+              <hr>
     `
             
     }
@@ -103,6 +117,7 @@ function subTotal(precio, i){
      let mail = document.getElementById("mail")
      let tarjeta = document.getElementById("datosTarjeta")
      let codigo = document.getElementById("codigoTarjeta")
+     let transferencia = document.getElementById("radioTransf")
     
      if (calle.value === '') {
         camposCompletos = false;
