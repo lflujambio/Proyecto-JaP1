@@ -33,26 +33,44 @@
       </div>
     </div>        
     </nav>
-    <div id="title-prod"><h4 class="alert-heading">Lista de productos:</h4></div>
+    <div class="conteiner">
+    <div id="title-prod" class="row">
+      <div class="col-md-4"></div>
+      <h4 class="alert-heading col-md-4">Lista de productos:</h4>
+      </div>
+      <div class="row">
+        <div id="buscador" class="col-md-4">
+          <input class="col-md-7" id="search" type="search" placeholder="Buscar...">
+        </div>
+      </div>
+      
+    </div>
    
-    <div id="buscador"> <input id="search" type="search" placeholder="Buscar..."></div>
-
-    <button id="relevancia">Más vendidos</button>
-    
-    <button id="asc">Menor precio</button>
-    
-    <button id="desc"> Mayor precio</button>
-    
-     <div id="filtro"> 
+     <div class="row">
+       <div id="filtro" class="col-md-4 col-sm"> 
+       <div>
       Cant.
       <input id="minim" type="number" placeholder="min"> 
       <input id="maxim" style="margin-left: 10px;" type="number" placeholder="máx">
       <button id="filtrar"> Filtrar </button> 
       <button id="limpiar" style="margin-left: 10px;margin-right: 10px;">Limpiar</button>
     </div>
-    <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0px;padding: 1px; background-color: white; border-color: black; color: black;">
-    <div id="listado" style="color: black;"></div>
+  </div>
+  <div class="col-md-4"></div>
+  <div class="col-md-4 col-sm-4">
+    <button  id="relevancia">Más vendidos</button>
+    
+    <button id="asc" >Menor precio</button>
+    
+    <button id="desc" > Mayor precio</button>
+  </div>
+  </div>
+</div>
+    <div class="row">
+   
+    <div id="listado" class="col-md col-sm" style="color: black;">
+    </div>
+    
       <p class="mb-0"></p> 
       </div>
     </div>

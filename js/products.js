@@ -16,15 +16,15 @@ function mostrar(array){
         if (((minPrice == undefined) || ( parseInt(product.cost) >= minPrice)) &&
             ((maxPrice == undefined) || ( parseInt(product.cost) <= maxPrice))){
     
-    cont += `<div id="entero" onclick=window.location.href="product-info.html">
-    <div id="sub">
-    <div id="texto>
+    cont += `<div class="col-md" id="entero" onclick=window.location.href="product-info.html">
+    <div id="sub" class="col-md">
+    <div class="col-md" id="texto>
     <h4 id="autoh4" style="text-align: center; font-size:25px">` + product.name +`</h4> 
     <small style="float: right; color: rgb(80, 76, 76); font-size:12px">`+ product.currency + product.cost +`</small> <br>
     <small style="float: right; color: rgb(80, 76, 76); font-size:12px">Vendidos:` + product.soldCount +` artículos</small> 
     </div>
-    <div id="imgs">
-    <p style="align: left; font-size:17px;"> <img id="car" style=" width:300px; height:200px; border:solid; 10px; color:black; margin-left: 5px; margin-right:8px;" src="`+ product.imgSrc + `" alt="` + product.description +`">` +  product.description +`</p>
+    <div class="col-md" id="imgs">
+    <p style="align: left; font-size:17px;"> <img id="car" class="col-md-4" src="`+ product.imgSrc + `" alt="` + product.description +`">` +  product.description +`</p>
     </div>
    <hr>
    </div>
@@ -44,19 +44,20 @@ document.getElementById("listado").innerHTML= cont;
             let product = arrayProd[i];
 
         if ((product.name.toLowerCase().includes(buscar)) || (product.description.toLowerCase().includes(buscar))) {
-            content += `<div id="entero" onclick=window.location.href="product-info.html">
-    <div id="sub">
-    <div id="texto>
-    <h4 id="autoh4" style="text-align: center; font-size:25px">` + product.name +`</h4> 
-    <small style="float: right; color: rgb(80, 76, 76); font-size:12px">`+ product.currency + product.cost +`</small> <br>
-    <small style="float: right; color: rgb(80, 76, 76); font-size:12px">Vendidos:` + product.soldCount +` artículos</small> 
-    </div>
-    <div id="imgs">
-    <p style="align: left; font-size:17px;"> <img id="car" style=" width:300px; height:200px; border:solid; 10px; color:black;" src="`+ product.imgSrc + `" alt="` + product.description +`">` +  product.description +`</p>
-    </div>
-   <hr>
-   </div>
- </div>`
+            content += `<div class="row"><div class="col-md" id="entero" onclick=window.location.href="product-info.html">
+            <div id="sub" class="col-md-4">
+            <div class="col-md-4" id="texto>
+            <h4 id="autoh4" style="text-align: center; font-size:25px">` + product.name +`</h4> 
+            <small style="float: right; color: rgb(80, 76, 76); font-size:12px">`+ product.currency + product.cost +`</small> 
+            <small style="float: right; color: rgb(80, 76, 76); font-size:12px">Vendidos:` + product.soldCount +` artículos</small> 
+            </div>
+            <div class="col-md" id="imgs">
+            <p class="col-md-8" style="align: left; font-size:17px;"> <img id="car" class="col-md" src="`+ product.imgSrc + `" alt="` + product.description +`">` +  product.description +`</p>
+            </div>
+           <hr>
+           </div>
+         </div>
+         </div>`
          
             }
             document.getElementById("listado").innerHTML = content 

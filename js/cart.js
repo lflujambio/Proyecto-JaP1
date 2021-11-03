@@ -117,7 +117,7 @@ function subTotal(precio, i){
      let mail = document.getElementById("mail")
      let tarjeta = document.getElementById("datosTarjeta")
      let codigo = document.getElementById("codigoTarjeta")
-     let transferencia = document.getElementById("radioTransf")
+     
     
      if (calle.value === '') {
         camposCompletos = false;
