@@ -17,7 +17,14 @@ getJSONData(JSON_CARRITO).then(function(resultado){
         alert("error inesperado")
     }
 
-})
+});
+let envios1 = document.getElementsByName("envios");
+for (let i = 0; i < envios1.length; i++) {
+  envios1[i].addEventListener("change",function(){
+    calcEnvio();
+  });
+    
+}
 
 });
 
@@ -95,13 +102,27 @@ function subTotal(precio, i){
      let subs = document.getElementsByClassName("subtotales");
      for (let i = 0; i < subs.length; i++) {
          total += parseInt(subs[i].innerHTML);
-         
-        
- }
+         }
  document.getElementById("cardTotal").innerHTML = total + " " + "UYU";
+ calcEnvio();
  }
 
+function calcEnvio (){
+    let total = parseInt(document.getElementById("cardTotal").innerHTML);
+    let envio;
 
+    let radios = document.getElementsByName("envios");
+    
+    for (let i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+            envio = parseInt(radios[i].value);
+            }
+            }
+        let totalYEnvio = ((envio/100)*total)+total
+       
+        document.getElementById("cardConEnvio").innerHTML = totalYEnvio;
+        
+}
 
 
 

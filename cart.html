@@ -58,7 +58,7 @@
   <div class="container p-5">
     
     
-     <div class="row .d-sm-none">
+     <div class="row">
       <div class="col-md-4"></div>
        <div class="col-md">
          <h2 >CARRITO DE COMPRAS</h2>
@@ -71,32 +71,34 @@
 <hr>
   
 <div class="row">
- <div class="col-md-7" id="mostrandoCarro">
+ <div class="col-md-8 col-sm-4 " id="mostrandoCarro">
 Subtotal:
   </div>
-  <div class="col-md-4"><div class="card" style="width: 18rem;">
-   <div class="card-body" style="background-color: rgb(201, 192, 192);">
-      <p class="card-text">Total:</p>
+  <div class="col-md-4 col-sm-3 ">
+    <div class="card" style="width: 18rem; position: sticky; top: 80px;">
+   <div class="card-body"  style="background-color: rgb(201, 192, 192);">
+      <p class="card-text" >Total:</p>
       <div class="card-text" id="cardTotal">
-        </div>
+        </div><br>
+        <p class="card-text">Total con envío:</p>
+        <div class="card-text" id="cardConEnvio">
+
+        </div><br>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDatosEnvioYCompra">Comprar</button>
       <br>
       <hr>
-      <div class="card-text" >
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDatosEnvioYCompra">Comprar</button>
       </div>
-      <div>
-        <div class="modal fade" id="modalDatosEnvioYCompra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLabel">Datos de envío</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
+      </div>
+    </div>
+      
+      <div class="row">
+        <div class="col-md-4 col-sm-4 "></div>  
+        <h3 class="col-md-8" style="text-align: center;">Datos de envío</h3>
+              
+              
+              <div class="col-md-10 col-sm-6">
                 <form>
-                  <div class="form-group">Dirección:
+                  <div class="form-group">Dirección:<br><br>
                     <div class="form-group">
                         <label for="formGroupExampleInput">Calle</label>
                         <input type="text" class="form-control" id="calleCasa" placeholder="Calle" required>
@@ -107,17 +109,17 @@ Subtotal:
                         <input type="text" class="form-control" id="esquinaCasa" placeholder="Esq." >
                       </div>
                       
-                      <div class="form-group col-md-2">
+                      <div class="form-group col-md-4">
                         <label for="inputZip">Número</label>
-                        <input type="text" class="form-control" id="numeroCasa">
+                        <input type="number" class="form-control" id="numeroCasa">
                       </div>
                     </div>
-                  
+                  <hr><br>
                     <div class="form-group">
                     <label for="exampleFormControlInput1">Email</label>
                     <input type="email" class="form-control" id="mail" placeholder="mail@ejemplo.com" >
                   </div>
-                  
+                  <hr><br>
                   <div class="form-group">
                     <label for="exampleFormControlSelect1">País</label>
                     <select class="form-control" id="exampleFormControlSelect1" >
@@ -140,32 +142,52 @@ Subtotal:
                       <option>Costa Rica</option>
                       </select>
                   </div>
+                  <hr><br>
                   <div class="form-check">Envío:<br>
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="exampleRadios1" value="option1" checked>
-                    <label class="form-check-label" for="inlineRadioOptions1">
-                      Premium - 15% del subtotal
+                    <input class="form-check-input" type="radio" name="envios" id="envios1" value="15">
+                    <label class="form-check-label" for="envios1">
+                      Premium - 15% del total
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="exampleRadios2" value="option2">
-                    <label class="form-check-label" for="inlineRadioOptions2">
-                      Standart - 7% del subtotal
+                    <input class="form-check-input" type="radio" name="envios" id="envios2" value="7">
+                    <label class="form-check-label" for="envios2">
+                      Standart - 7% del total
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="exampleRadios3" value="option3" >
-                    <label class="form-check-label" for="inlineRadioOptions3">
-                      Express - 5% del subtotal
+                    <input class="form-check-input" type="radio" name="envios" id="envios3" value="5" >
+                    <label class="form-check-label" for="envios3">
+                      Express - 5% del total
                     </label>
                   </div>
                    <br>
                     <hr>
                     
-                    <div class="form"><h5>Forma de pago:</h5><br><br>
-                      <div >
-                        <label for="validationDefault03">Tarjeta de crédito</label>
+        <div class="modal fade" id="modalDatosEnvioYCompra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+               <div class="form"><h5>Forma de pago:</h5><br>
+                      <div>
+                        <div class="row">
+                          <div class="form-check col-12">
+                            <input class="form-check-input" type="radio" name="opcionesOnline" id="pagoOnline" value="option1" checked>
+                            <label class="form-check-label" for="pagoOnline">
+                             Pago online
+                            </label>
+                          </div><br><br>
+                          <div class="col-7">
+                          <label for="datosTarjeta">Número tarjeta de crédito</label>
                         <input type="text" class="form-control" id="datosTarjeta" placeholder="Datos tarjeta">
                       </div>
+                         <div class="col-5">
+                        <label for="codigoTarjeta">Código de seguridad</label>
+                        <input type="number" class="form-control" id="codigoTarjeta">
+                         </div>
+                      </div>
+                        
+                    </div>
                       <br><br>
                       <div>
                         <select class="form-control" id="exampleFormControlSelect2" >
@@ -175,15 +197,25 @@ Subtotal:
                       </select>
                       </div>
                      <br><br>
-                      <div >
-                        <label for="inputZip">Código de seguridad</label>
-                        <input type="text" class="form-control" id="codigoTarjeta">
+                     <div>
+                       <label for="vencimientoTarjeta">Vencimiento tarjeta</label>
+                       <input type="text" class="form-control" id="vencimientoTarjeta" placeholder="(MM/AA)">
                       </div>
+                      
                       <br><br>
-                    
-                      <p>O transferencia bancaria a la cuenta itaú: 123466545</p>
-                  </div>
-                  
+                    <hr>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="opcionesOnline" id="transferenciaBancaria" value="option2">
+                      <label class="form-check-label" for="transferenciaBancaria">
+                        Transferencia bancaria
+                      </label>
+                    </div><br>
+                     <label for="datosBanco">Número cuenta de origen</label>
+                      <input id="datosBanco" type="text" class="form-control">
+                      <br><br>
+                      <label for="datosOtroBanco">Número cuenta destino</label>
+                      <input id="datosOtroBanco" type="text" placeholder="1234567 itaú" class="form-control">
+                </div><br><br><br>
                 </form>
               </div>
               <div class="modal-footer">

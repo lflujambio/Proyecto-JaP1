@@ -56,7 +56,7 @@ document.getElementById("listado").innerHTML = cont;
   
 
         if ((product.name.toLowerCase().includes(buscar)) || (product.description.toLowerCase().includes(buscar))) {
-            content += `<div class="row">
+            content += `<div class="row" style="margin-left: 15px;">
             <div class="col-md-4 col-sm"></div>
             <div id="entero" onclick=window.location.href="product-info.html">
             <div id="sub">
