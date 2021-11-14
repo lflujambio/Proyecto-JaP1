@@ -120,30 +120,36 @@ function calcEnvio (){
             }
         let totalYEnvio = ((envio/100)*total)+total
        
-        document.getElementById("cardConEnvio").innerHTML = totalYEnvio;
+        document.getElementById("cardConEnvio").innerHTML = totalYEnvio + " " + "UYU";
         
 }
 
-
-
- function redireccionCart(){
+function redireccionCart(){
      window.location.href="inicio.html"
  }
  
  document.getElementById("botonCompra").addEventListener("click", function(){
-     let camposCompletos = true;
+    let camposCompletos = true;
+     let radioCheck = false;
      let calle = document.getElementById("calleCasa")
      let esquina = document.getElementById("esquinaCasa")
      let numero= document.getElementById("numeroCasa")
      let mail = document.getElementById("mail")
      let tarjeta = document.getElementById("datosTarjeta")
      let codigo = document.getElementById("codigoTarjeta")
-     
+     let vencimiento = document.getElementById("vencimientoTarjeta")
+     let radioB = document.getElementsByName("envios")
     
-     if (calle.value === '') {
+     for (let i = 0; i < radioB.length; i++) {
+        const element = radioB[i];
+        if (element.checked) {
+            radioCheck = true;
+            }
+        }
+    if (calle.value === '')  {
         camposCompletos = false;
     }
-    if (esquina.value === '') {
+    if (esquina.value === '')  {
         camposCompletos=false;
         
     }
@@ -155,19 +161,46 @@ function calcEnvio (){
         camposCompletos=false;
         
     }
-    if (tarjeta.value=== '') {
+    if ((tarjeta.value === '') && (tarjeta.disabled === false)) {
+        camposCompletos = false;
+        }
+    if ((codigo.value === '') && (codigo.disabled === false)) {
         camposCompletos=false;
         
     }
-    if (codigo.value=== '') {
+    
+    if ((vencimiento.value === '') && (vencimiento.disabled === false)) {
         camposCompletos=false;
-        
-    }
-   if (camposCompletos) {
+    } 
+   
+    if ((camposCompletos) && (radioCheck === true)){
     alert("La compra se ha realizado con éxito!")
     setTimeout(redireccionCart,1000)
 }else{
-    alert("Complete los campos")
+    alert("Complete los campos y elija un envío")
 }
 
 });
+
+function opcionTransferencia(){
+    let numerosTarjeta = document.getElementById("datosTarjeta").disabled= true;
+    let codigo = document.getElementById("codigoTarjeta").disabled = true;
+    let vencimiento = document.getElementById("vencimientoTarjeta").disabled = true;
+    let select = document.getElementById("selectTarjeta").disabled = true;
+
+    let cuentaOrigen = document.getElementById("datosBanco").disabled = false;
+    let cuentaDestino = document.getElementById("datosOtroBanco").disabled = false;
+
+}
+
+function opcionTarjeta(){
+    let numerosTarjeta = document.getElementById("datosTarjeta").disabled= false;
+    let codigo = document.getElementById("codigoTarjeta").disabled = false;
+    let vencimiento = document.getElementById("vencimientoTarjeta").disabled = false;
+    let select = document.getElementById("selectTarjeta").disabled = false;
+
+    let cuentaOrigen = document.getElementById("datosBanco").disabled = true;
+    let cuentaDestino = document.getElementById("datosOtroBanco").disabled = true;
+
+
+}

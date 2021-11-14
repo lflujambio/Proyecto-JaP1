@@ -172,7 +172,7 @@ Subtotal:
                       <div>
                         <div class="row">
                           <div class="form-check col-12">
-                            <input class="form-check-input" type="radio" name="opcionesOnline" id="pagoOnline" value="option1" checked>
+                            <input class="form-check-input" type="radio" name="opcionesOnline" id="pagoOnline" value="option1" onclick="opcionTarjeta()" checked>
                             <label class="form-check-label" for="pagoOnline">
                              Pago online
                             </label>
@@ -190,7 +190,7 @@ Subtotal:
                     </div>
                       <br><br>
                       <div>
-                        <select class="form-control" id="exampleFormControlSelect2" >
+                        <select class="form-control" id="selectTarjeta" >
                       <option>Visa</option>
                       <option>Mastercard</option>
                       <option>American Express</option>
@@ -205,16 +205,16 @@ Subtotal:
                       <br><br>
                     <hr>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="opcionesOnline" id="transferenciaBancaria" value="option2">
+                      <input class="form-check-input" type="radio" name="opcionesOnline" id="transferenciaBancaria" value="option2" onclick="opcionTransferencia()">
                       <label class="form-check-label" for="transferenciaBancaria">
                         Transferencia bancaria
                       </label>
                     </div><br>
                      <label for="datosBanco">Número cuenta de origen</label>
-                      <input id="datosBanco" type="text" class="form-control">
+                      <input id="datosBanco" type="text" class="form-control" disabled>
                       <br><br>
                       <label for="datosOtroBanco">Número cuenta destino</label>
-                      <input id="datosOtroBanco" type="text" placeholder="1234567 itaú" class="form-control">
+                      <input id="datosOtroBanco" type="text" placeholder="1234567 itaú" class="form-control" disabled>
                 </div><br><br><br>
                 </form>
               </div>
