@@ -109,14 +109,14 @@ function subTotal(precio, i){
 
 function calcEnvio (){
     let total = parseInt(document.getElementById("cardTotal").innerHTML);
-    let envio;
+    let envio = 0
 
     let radios = document.getElementsByName("envios");
     
     for (let i = 0; i < radios.length; i++) {
         if (radios[i].checked) {
             envio = parseInt(radios[i].value);
-            }
+        }
             }
         let totalYEnvio = ((envio/100)*total)+total
        
@@ -138,6 +138,8 @@ function redireccionCart(){
      let tarjeta = document.getElementById("datosTarjeta")
      let codigo = document.getElementById("codigoTarjeta")
      let vencimiento = document.getElementById("vencimientoTarjeta")
+     let cuentaO = document.getElementById("datosBanco")
+     let cuentaD = document.getElementById("datosOtroBanco")
      let radioB = document.getElementsByName("envios")
     
      for (let i = 0; i < radioB.length; i++) {
@@ -171,9 +173,15 @@ function redireccionCart(){
     
     if ((vencimiento.value === '') && (vencimiento.disabled === false)) {
         camposCompletos=false;
-    } 
-   
-    if ((camposCompletos) && (radioCheck === true)){
+    }
+     if ((cuentaO.value === '') && (cuentaO.disabled === false)) {
+        camposCompletos = false;
+    }
+   if ((cuentaD.value === '')&& (cuentaD.disabled === false)) {
+       camposCompletos = false;
+   }
+    
+   if ((camposCompletos) && (radioCheck === true)){
     alert("La compra se ha realizado con éxito!")
     setTimeout(redireccionCart,1000)
 }else{
